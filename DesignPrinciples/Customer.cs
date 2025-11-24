@@ -12,6 +12,7 @@
         public float Income { get; set; }
         public float Outcome { get; set; }
         public float AllowedDebit { get; set; }
+        public bool IsActive { get; set; }
 
         public bool IsDebit()
         {

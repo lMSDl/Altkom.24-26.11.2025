@@ -6,23 +6,23 @@
 
         public bool DeleteCustomer(Customer customer)
         {
-            return Customers.Remove(customer);
+            return customer.IsActive = false;
         }
 
         public Customer FindByDebit(float debit)
         {
-            return Customers.SingleOrDefault(x => x.AllowedDebit == debit);
+            return CustomersGloabalFilter().SingleOrDefault(x => x.AllowedDebit == debit);
         }
 
         public bool Charge(int customerId, float amount)
         {
-            var customer = Customers.SingleOrDefault(x => x.Id == customerId);
+            var customer = FindCustomerById(customerId);
             if (customer == null)
             {
                 return false;
             }
 
-            if (customer.Income - customer.Outcome + customer.AllowedDebit < amount)
+            if (GetBalance(customerId) + customer.AllowedDebit < amount)
             {
                 return false;
             }
@@ -33,7 +33,7 @@
 
         public void Fund(int customerId, float amount)
         {
-            var customer = Customers.Where(x => x.Id == customerId).SingleOrDefault();
+            var customer = FindCustomerById(customerId);
             if (customer == null)
             {
                 return;
@@ -44,8 +44,18 @@
 
         public float? GetBalance(int customerId)
         {
-            var customer = Customers.Where(x => x.Id == customerId).SingleOrDefault();
+            Customer? customer = FindCustomerById(customerId);
             return customer?.Income - customer?.Outcome;
+        }
+
+        private Customer? FindCustomerById(int customerId)
+        {
+            return CustomersGloabalFilter().Where(x => x.Id == customerId).SingleOrDefault();
+        }
+
+        private IEnumerable<Customer> CustomersGloabalFilter()
+        {
+            return Customers.Where(x => x.IsActive);
         }
     }
 
