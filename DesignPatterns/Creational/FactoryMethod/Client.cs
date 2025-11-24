@@ -1,30 +1,44 @@
-﻿namespace DesignPatterns.Creational.FactoryMethod
+﻿using DesignPatterns.Creational.FactoryMethod.ClientOperations;
+
+namespace DesignPatterns.Creational.FactoryMethod
 {
     internal class Client
     {
         public static void Execute()
         {
-            var elevator = new Elevator();
+            //var elevator = new Elevator();
+            var elevator = new HorizontalElevator();
+            var request = new Request("GOTO", 5);
+            
+            elevator.Execute(request.Operation, request.Floor);
 
-            var request = new Request("UP", 5);
+            elevator.Execute(request.Operation, request.Floor);
 
-            IElevatorOperation? operation = request.Operation.ToUpper() switch
-            {
-                "UP" => new ElevatorUp(),
-                "DOWN" => new ElevatorDown(),
-                _ => null
-            };
 
-            if (operation != null)
-            {
-                elevator.Execute(operation, request.Floor);
-            }
-            else
-            {
-                Console.WriteLine("Invalid operation requested.");
-            }
+            request = new Request("LEFT", 5);
+            elevator.Execute(request.Operation, request.Floor);
+
         }
 
     }
     record Request(string Operation, int Floor);
+
+
+    class HorizontalElevator : Elevator
+    {
+        protected override IElevatorOperation? CreateOperation(string operation)
+        {
+
+            switch (operation.ToUpper())
+            {
+                case "LEFT":
+                    return new ElevatorLeft();
+                case "RIGHT":
+                    return new ElevatorRight();
+                default:
+                    return null;
+            }
+            return base.CreateOperation(operation);
+        }
+    }
 }
