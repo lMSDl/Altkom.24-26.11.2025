@@ -2,28 +2,14 @@
 {
     public class PaymentService
     {
-        private ICollection<Customer> Customers { get; } = new List<Customer> { new Customer(1), new Customer(2), new Customer(3), new Customer(4), new Customer(5) };
-
-        public bool Charge(int customerId, float amount)
+        public bool Charge(Customer? customer, float amount)
         {
-            var customer = FindCustomerById(customerId);
-            return customer?.Charge(amount) ?? false;
+            return customer?.Account.Charge(amount) ?? false;
         }
 
-        public void Fund(int customerId, float amount)
+        public void Fund(Customer? customer, float amount)
         {
-            var customer = FindCustomerById(customerId);
-            customer?.Fund(amount);
-        }
-
-        private Customer? FindCustomerById(int customerId)
-        {
-            return CustomersGloabalFilter().Where(x => x.Id == customerId).SingleOrDefault();
-        }
-
-        private IEnumerable<Customer> CustomersGloabalFilter()
-        {
-            return Customers.Where(x => x.IsActive);
+            customer?.Account.Fund(amount);
         }
     }
 
