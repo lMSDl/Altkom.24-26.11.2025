@@ -7,13 +7,13 @@ namespace DesignPatterns.Creational.AbstractFactory
         {
             var order = new Order();
 
-            order.MakeOrder("Honda", "Compact", "Suv");
+            order.MakeOrder((ISuvFactory)new HondaFactory(), "Compact");
             Console.WriteLine("Ordered: " + order.CarName());
 
-            order.MakeOrder("Honda", "Full", "Sedan");
+            order.MakeOrder((ISedanFactory)new HondaFactory(), "Full");
             Console.WriteLine("Ordered: " + order.CarName());
 
-            order.MakeOrder("Toyota", "Compact", "Suv");
+            order.MakeOrder((ISuvFactory)new ToyotaFactory(), "Compact");
             Console.WriteLine("Ordered: " + order.CarName());
         }
 
