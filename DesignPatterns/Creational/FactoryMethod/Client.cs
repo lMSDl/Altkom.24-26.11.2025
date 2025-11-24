@@ -36,9 +36,8 @@ namespace DesignPatterns.Creational.FactoryMethod
                 case "RIGHT":
                     return new ElevatorRight();
                 default:
-                    return null;
+                    return base.CreateOperation(operation);
             }
-            return base.CreateOperation(operation);
         }
     }
 }
