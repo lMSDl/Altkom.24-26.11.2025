@@ -1,3 +1,3 @@
-﻿using DesignPatterns.Creational.FactoryMethod;
+﻿using DesignPatterns.Creational.AbstractFactory;
 
 Client.Execute();
