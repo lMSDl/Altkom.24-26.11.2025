@@ -7,35 +7,13 @@
         public bool Charge(int customerId, float amount)
         {
             var customer = FindCustomerById(customerId);
-            if (customer == null)
-            {
-                return false;
-            }
-
-            if (GetBalance(customerId) + customer.AllowedDebit < amount)
-            {
-                return false;
-            }
-
-            customer.Outcome += amount;
-            return true;
+            return customer?.Charge(amount) ?? false;
         }
 
         public void Fund(int customerId, float amount)
         {
             var customer = FindCustomerById(customerId);
-            if (customer == null)
-            {
-                return;
-            }
-
-            customer.Income += amount;
-        }
-
-        public float? GetBalance(int customerId)
-        {
-            Customer? customer = FindCustomerById(customerId);
-            return customer?.Income - customer?.Outcome;
+            customer?.Fund(amount);
         }
 
         private Customer? FindCustomerById(int customerId)
