@@ -1,11 +1,11 @@
 ﻿using DesignPrinciples;
 
-var service = new Class2();
+var service = new PaymentService();
 
 var custmerId = 1;
 
-service.Func2(custmerId, 500);
-if (service.Func1(custmerId, 100))
+service.Fund(custmerId, 500);
+if (service.Charge(custmerId, 100))
 {
     Console.WriteLine($"Customer {custmerId} charged. Actual balace: {service.GetBalance(custmerId)}");
 }
