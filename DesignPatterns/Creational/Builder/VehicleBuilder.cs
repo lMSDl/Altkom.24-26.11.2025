@@ -4,25 +4,30 @@
     {
         private Vehicle _vehicle = new Vehicle();
 
-        public void SetWheels(int wheels)
+        public VehicleBuilder SetWheels(int wheels)
         {
             _vehicle.Wheels = wheels;
+            return this;
         }
-        public void SetSeats(int seats)
+        public VehicleBuilder SetSeats(int seats)
         {
             _vehicle.Seats = seats;
+            return this;
         }
-        public void SetDoors(int doors)
+        public VehicleBuilder SetDoors(int doors)
         {
             _vehicle.Doors = doors;
+            return this;
         }
-        public void SetTrunkCapacity(int trunkCapacity)
+        public VehicleBuilder SetTrunkCapacity(int trunkCapacity)
         {
             _vehicle.TrunkCapacity = trunkCapacity;
+            return this;
         }
-        public void SetEnginePower(int enginePower)
+        public VehicleBuilder SetEnginePower(int enginePower)
         {
             _vehicle.EnginePower = enginePower;
+            return this;
         }
         public Vehicle Build()
         {
