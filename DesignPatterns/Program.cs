@@ -1,2 +1,1 @@
-﻿DesignPatterns.Creational.Prototype.Client.Execute();
-DesignPatterns.Creational.Builder.Client.Execute();
+﻿DesignPatterns.Creational.Singleton.Client.Execute();
