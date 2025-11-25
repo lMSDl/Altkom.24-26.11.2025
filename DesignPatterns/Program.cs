@@ -1,1 +1,1 @@
-﻿DesignPatterns.Creational.ObjectPool.Client.Execute();
+﻿DesignPatterns.Structural.Bridge.Client.Execute();
