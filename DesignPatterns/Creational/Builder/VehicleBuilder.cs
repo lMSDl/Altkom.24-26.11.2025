@@ -1,37 +1,38 @@
 ﻿namespace DesignPatterns.Creational.Builder
 {
-    internal class VehicleBuilder
+    internal class VehicleBuilder : VehicleBuilderFacade
     {
-        private Vehicle _vehicle = new Vehicle();
+        public VehicleBuilder() : this(new Vehicle())
+        {
+        }
+        public VehicleBuilder(Vehicle vehicle) : base(vehicle)
+        {
+        }
 
         public VehicleBuilder SetWheels(int wheels)
         {
-            _vehicle.Wheels = wheels;
+            Vehicle.Wheels = wheels;
             return this;
         }
         public VehicleBuilder SetSeats(int seats)
         {
-            _vehicle.Seats = seats;
+            Vehicle.Seats = seats;
             return this;
         }
         public VehicleBuilder SetDoors(int doors)
         {
-            _vehicle.Doors = doors;
+            Vehicle.Doors = doors;
             return this;
         }
         public VehicleBuilder SetTrunkCapacity(int trunkCapacity)
         {
-            _vehicle.TrunkCapacity = trunkCapacity;
+            Vehicle.TrunkCapacity = trunkCapacity;
             return this;
         }
         public VehicleBuilder SetEnginePower(int enginePower)
         {
-            _vehicle.EnginePower = enginePower;
+            Vehicle.EnginePower = enginePower;
             return this;
-        }
-        public Vehicle Build()
-        {
-            return (Vehicle)_vehicle.Clone();
         }
     }
 }

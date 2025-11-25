@@ -31,6 +31,11 @@
                                         .SetWheels(4)
                                         .SetSeats(5)
                                         .SetDoors(4)
+                                    .Production
+                                        .SetYear(2024)
+                                        .SetManufacturer("Toyota")
+                                        .SetModel("Corolla")
+                                    .Parts
                                         .SetTrunkCapacity(500)
                                         .SetEnginePower(100)
                                         .Build();
