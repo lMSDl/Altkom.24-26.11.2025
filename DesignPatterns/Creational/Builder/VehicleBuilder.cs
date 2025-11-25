@@ -31,7 +31,7 @@
         }
         public Vehicle Build()
         {
-            return _vehicle;
+            return (Vehicle)_vehicle.Clone();
         }
     }
 }

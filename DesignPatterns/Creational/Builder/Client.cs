@@ -22,6 +22,10 @@
 
             Console.WriteLine(vehicle);
 
+            vehicleBuilder.SetWheels(100);
+
+            Console.WriteLine(vehicle);
+
 
             vehicle = new VehicleBuilder()
                                         .SetWheels(4)
