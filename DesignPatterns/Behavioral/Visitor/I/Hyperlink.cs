@@ -3,9 +3,9 @@
     internal class Hyperlink : PlainText
     {
         public string Url { get; set; }
-        public override string ToHtml()
+        public override string Accept(IVisitor visitor)
         {
-            return $"<a href=\"{Url}\">{Text}</a>";
+            return visitor.Visit(this);
         }
     }
 }
