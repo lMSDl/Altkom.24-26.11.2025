@@ -1,1 +1,1 @@
-﻿DesignPatterns.Behavioral.ChainOfResponsibility.II.Client.Execute();
+﻿DesignPatterns.Behavioral.Command.Client.Execute();
