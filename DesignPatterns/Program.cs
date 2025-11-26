@@ -1,1 +1,1 @@
-﻿DesignPatterns.Behavioral.Visitor.II.Client.Execute();
+﻿DesignPatterns.Behavioral.NullObject.Client.Execute();
